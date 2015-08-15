@@ -1,0 +1,9 @@
+services:
+    domain_driven_design.command_event_dispatcher:
+        alias: domain_driven_design.command_event_dispatcher.default
+
+    domain_driven_design.command_event_dispatcher.default:
+        class: PhpDDD\DomainDrivenDesign\Domain\CommandEventDispatcher
+        arguments:
+            - @phpddd.command_dispatcher.default
+            - @phpddd.event_dispatcher.default

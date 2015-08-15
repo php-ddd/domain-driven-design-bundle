@@ -16,7 +16,10 @@
     ],
     "require": {
         "php": ">=5.5",
-        "php-ddd/domain-driven-design": "~0.6"
+        "php-ddd/domain-driven-design": "~0.6",
+        "symfony/http-kernel": "2.*",
+        "symfony/config": "2.*",
+        "symfony/dependency-injection": "2.*"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "^1.8.1",
