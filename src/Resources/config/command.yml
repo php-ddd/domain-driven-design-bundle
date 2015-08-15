@@ -1,0 +1,6 @@
+services:
+    domain_driven_design.command_dispatcher:
+        alias: phpddd.command_dispatcher.default
+
+    domain_driven_design.command_dispatcher.default:
+        class: PhpDDD\DomainDrivenDesign\Command\CommandDispatcher

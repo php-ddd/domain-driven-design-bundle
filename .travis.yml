@@ -6,6 +6,19 @@ php:
   - 5.5
   - 5.6
 
+env:
+  - SYMFONY_VERSION="2.3.*"
+  - SYMFONY_VERSION="2.6.*"
+  - SYMFONY_VERSION="2.7.*"
+  - SYMFONY_VERSION="2.8.0-dev"
+  - SYMFONY_VERSION="dev-master"
+
+matrix:
+  allow_failures:
+    - env: SYMFONY_VERSION="2.8.0-dev"
+    - env: SYMFONY_VERSION="dev-master"
+  fast_finish: true
+
 cache:
   directories:
     - vendor
@@ -14,6 +27,7 @@ cache:
 before_install:
   - composer selfupdate
   - composer config github-oauth.github.com $GITHUB_OAUTH_TOKEN
+  - composer require --dev --no-update "symfony/http-kernel:${SYMFONY_VERSION}" "symfony/config:${SYMFONY_VERSION}" "symfony/dependency-injection:${SYMFONY_VERSION}"
 
 install:
   - composer install --no-interaction --prefer-dist
