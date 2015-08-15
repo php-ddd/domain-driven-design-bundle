@@ -1,0 +1,27 @@
+sudo: false
+
+language: php
+
+php:
+  - 5.5
+  - 5.6
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+
+before_install:
+  - composer selfupdate
+  - composer config github-oauth.github.com $GITHUB_OAUTH_TOKEN
+
+install:
+  - composer install --no-interaction --prefer-dist
+
+script:
+  - phpunit
+  - mkdir -p .autoload/composer && mv -v ./vendor/autoload.php ./.autoload/autoload.php && mv -v ./vendor/composer/!(installed.json) ./.autoload/composer
+
+after_script:
+  - mv -v ./.autoload/autoload.php ./vendor/autoload.php && mv -v ./.autoload/composer/* ./vendor/composer && rm -r .autoload
+  - php vendor/bin/coveralls -v
