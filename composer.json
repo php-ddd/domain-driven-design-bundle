@@ -1,13 +1,11 @@
 {
     "name": "php-ddd/domain-driven-design-bundle",
+    "type": "symfony-bundle",
     "description": "DomainDrivenDesign integration for your Symfony2 project",
     "minimum-stability": "stable",
     "license": "MIT",
     "autoload": {
-        "psr-4": {"PhpDDD\\DomainDrivenDesignBundle\\": "src"}
-    },
-    "autoload-dev": {
-        "psr-4": {"PhpDDD\\DomainDrivenDesignBundle\\Tests\\": "tests"}
+        "psr-4": {"PhpDDD\\DomainDrivenDesignBundle\\": ""}
     },
     "authors": [
         {

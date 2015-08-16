@@ -57,9 +57,9 @@ final class DispatcherCompilerPass implements CompilerPassInterface
     /**
      * @param ContainerBuilder $container
      * @param Definition       $dispatcher
-     * @param                  $listenerId
+     * @param string           $listenerId
      */
-    protected function processListenerDefinition(ContainerBuilder $container, Definition $dispatcher, $listenerId)
+    private function processListenerDefinition(ContainerBuilder $container, Definition $dispatcher, $listenerId)
     {
         $def  = $container->getDefinition($listenerId);
         $tags = $def->getTag($this->tagName);

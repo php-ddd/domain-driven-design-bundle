@@ -15,8 +15,20 @@ final class DispatcherCompilerPassTest extends PHPUnit_Framework_TestCase
 {
     const COMMAND_DISPATCHER_SERVICE_NAME = 'domain_driven_design.command_dispatcher';
     const COMMAND_TAG                     = 'domain_driven_design.command_subscriber';
+
     /**
-     *
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\Compiler\DispatcherCompilerPass::__construct
+     */
+    public function testConstruct()
+    {
+        $pass = new DispatcherCompilerPass(self::COMMAND_DISPATCHER_SERVICE_NAME, self::COMMAND_TAG, 'register');
+        $this->assertTrue(true, 'The constructor should not fail');
+
+        return $pass;
+    }
+    /**
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\Compiler\DispatcherCompilerPass::process
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\Compiler\DispatcherCompilerPass::processListenerDefinition
      */
     public function testProcess()
     {
@@ -32,6 +44,7 @@ final class DispatcherCompilerPassTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\Compiler\DispatcherCompilerPass::process
      * @expectedException \RuntimeException
      */
     public function testProcessWithoutDefinition()
@@ -58,7 +71,7 @@ final class DispatcherCompilerPassTest extends PHPUnit_Framework_TestCase
      */
     private function getContainer()
     {
-        $container         = new ContainerBuilder();
+        $container = new ContainerBuilder();
         $container->register(self::COMMAND_DISPATCHER_SERVICE_NAME, new CommandDispatcher());
 
         return $container;

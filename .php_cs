@@ -1,4 +1,8 @@
 <?php
+$finder = Symfony\CS\Finder\DefaultFinder::create()
+    ->exclude(['build', 'Resources', 'vendor'])
+    ->in([__DIR__])
+;
 
 return Symfony\CS\Config\Config::create()
     ->level(Symfony\CS\FixerInterface::SYMFONY_LEVEL)
@@ -12,11 +16,10 @@ return Symfony\CS\Config\Config::create()
             'align_equals',
             'multiline_spaces_before_semicolon',
             'ordered_use',
+            'short_array_syntax',
             'strict',
             'strict_param',
         ]
     )
-    ->finder(
-        Symfony\CS\Finder\DefaultFinder::create()->in([__DIR__ . '/src', __DIR__ . '/tests'])
-    )
+    ->finder($finder)
     ->setUsingCache(true);

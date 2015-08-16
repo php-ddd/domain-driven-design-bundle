@@ -2,25 +2,26 @@
 
 namespace PhpDDD\DomainDrivenDesignBundle\Tests\DependencyInjection;
 
-use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\DomainDrivenDesignExtension;
+use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\PhpDDDDomainDrivenDesignExtension;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  *
  */
-final class DomainDrivenDesignExtensionTest extends PHPUnit_Framework_TestCase
+final class PhpDDDDomainDrivenDesignExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider dataProvider
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\PhpDDDDomainDrivenDesignExtension::loadInternal
      *
      * @param bool $withCommand
      * @param bool $withEvent
      * @param bool $withCommandEvent
      */
-    public function testLoad($withCommand = true, $withEvent = true, $withCommandEvent = true)
+    public function testLoadInternal($withCommand = true, $withEvent = true, $withCommandEvent = true)
     {
-        $extension = new DomainDrivenDesignExtension();
+        $extension = new PhpDDDDomainDrivenDesignExtension();
         $container = new ContainerBuilder();
         $config    = [
             'array_node' => [

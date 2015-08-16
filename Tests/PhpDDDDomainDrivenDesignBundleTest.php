@@ -2,15 +2,18 @@
 
 namespace PhpDDD\DomainDrivenDesignBundle\Tests;
 
-use PhpDDD\DomainDrivenDesignBundle\DomainDrivenDesignBundle;
+use PhpDDD\DomainDrivenDesignBundle\PhpDDDDomainDrivenDesignBundle;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  *
  */
-final class DomainDrivenDesignBundleTest extends PHPUnit_Framework_TestCase
+final class PhpDDDDomainDrivenDesignBundleTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers \PhpDDD\DomainDrivenDesignBundle\PhpDDDDomainDrivenDesignBundle::build
+     */
     public function testBuild()
     {
         $container = $this->getMockBuilder(ContainerBuilder::class)
@@ -20,7 +23,7 @@ final class DomainDrivenDesignBundleTest extends PHPUnit_Framework_TestCase
             ->method('addCompilerPass')
             ->willReturnSelf();
 
-        $bundle = new DomainDrivenDesignBundle();
+        $bundle = new PhpDDDDomainDrivenDesignBundle();
         $bundle->build($container);
     }
 }

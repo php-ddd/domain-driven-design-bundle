@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f9b5e239ae5ac714ea6b9d9d9b3cd04e",
+    "hash": "4f2ce169071614cdbd87bf8fe98e91de",
     "packages": [
         {
             "name": "php-ddd/domain-driven-design",
