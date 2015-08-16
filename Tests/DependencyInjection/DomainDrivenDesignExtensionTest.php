@@ -2,18 +2,18 @@
 
 namespace PhpDDD\DomainDrivenDesignBundle\Tests\DependencyInjection;
 
-use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\PhpDDDDomainDrivenDesignExtension;
+use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\DomainDrivenDesignExtension;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  *
  */
-final class PhpDDDDomainDrivenDesignExtensionTest extends PHPUnit_Framework_TestCase
+final class DomainDrivenDesignExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider dataProvider
-     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\PhpDDDDomainDrivenDesignExtension::loadInternal
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\DomainDrivenDesignExtension::loadInternal
      *
      * @param bool $withCommand
      * @param bool $withEvent
@@ -21,7 +21,7 @@ final class PhpDDDDomainDrivenDesignExtensionTest extends PHPUnit_Framework_Test
      */
     public function testLoadInternal($withCommand = true, $withEvent = true, $withCommandEvent = true)
     {
-        $extension = new PhpDDDDomainDrivenDesignExtension();
+        $extension = new DomainDrivenDesignExtension();
         $container = new ContainerBuilder();
         $config    = [
             'array_node' => [
@@ -39,6 +39,15 @@ final class PhpDDDDomainDrivenDesignExtensionTest extends PHPUnit_Framework_Test
         $this->assertEquals($withCommand, $container->getParameter('domain_driven_design.command.enabled'));
         $this->assertEquals($withEvent, $container->getParameter('domain_driven_design.event.enabled'));
         $this->assertEquals($withCommandEvent, $container->getParameter('domain_driven_design.command_event.enabled'));
+    }
+
+    /**
+     * @covers \PhpDDD\DomainDrivenDesignBundle\DependencyInjection\DomainDrivenDesignExtension::getAlias
+     */
+    public function testGetAlias()
+    {
+        $extension = new DomainDrivenDesignExtension();
+        $this->assertEquals('domain_driven_design', $extension->getAlias());
     }
 
     public function dataProvider()

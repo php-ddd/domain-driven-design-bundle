@@ -2,6 +2,7 @@
 
 namespace PhpDDD\DomainDrivenDesignBundle\Tests;
 
+use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\DomainDrivenDesignExtension;
 use PhpDDD\DomainDrivenDesignBundle\PhpDDDDomainDrivenDesignBundle;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -25,5 +26,14 @@ final class PhpDDDDomainDrivenDesignBundleTest extends PHPUnit_Framework_TestCas
 
         $bundle = new PhpDDDDomainDrivenDesignBundle();
         $bundle->build($container);
+    }
+
+    /**
+     * @covers PhpDDD\DomainDrivenDesignBundle\PhpDDDDomainDrivenDesignBundle::getContainerExtension
+     */
+    public function testGetContainerExtension()
+    {
+        $bundle = new PhpDDDDomainDrivenDesignBundle();
+        $this->assertInstanceOf(DomainDrivenDesignExtension::class, $bundle->getContainerExtension());
     }
 }

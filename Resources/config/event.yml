@@ -1,6 +1,6 @@
 services:
     domain_driven_design.event_dispatcher:
-        alias: phpddd.event_dispatcher.default
+        alias: domain_driven_design.event_dispatcher.default
 
     domain_driven_design.event_dispatcher.default:
         class: PhpDDD\DomainDrivenDesign\Event\EventDispatcher

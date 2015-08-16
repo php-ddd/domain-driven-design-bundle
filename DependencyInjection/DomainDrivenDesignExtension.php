@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 /**
  *
  */
-final class PhpDDDDomainDrivenDesignExtension extends ConfigurableExtension
+final class DomainDrivenDesignExtension extends ConfigurableExtension
 {
     /**
      * Configures the passed container according to the merged configuration.
@@ -28,5 +28,13 @@ final class PhpDDDDomainDrivenDesignExtension extends ConfigurableExtension
             }
             $container->setParameter(sprintf('domain_driven_design.%s.enabled', $featureName), $enabled);
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlias()
+    {
+        return 'domain_driven_design';
     }
 }

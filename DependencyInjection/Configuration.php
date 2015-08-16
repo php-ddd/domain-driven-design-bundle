@@ -21,9 +21,9 @@ final class Configuration implements ConfigurationInterface
         $rootNode    = $treeBuilder->root('domain_driven_design');
         $rootNode
             ->children()
-            ->booleanNode('command')->defaultTrue()->end()
-            ->booleanNode('command_event')->defaultTrue()->end()
-            ->booleanNode('event')->defaultTrue()->end()
+                ->booleanNode('command')->defaultTrue()->end()
+                ->booleanNode('command_event')->defaultTrue()->end()
+                ->booleanNode('event')->defaultTrue()->end()
             ->end();
 
         return $treeBuilder;

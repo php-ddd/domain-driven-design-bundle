@@ -3,6 +3,7 @@
 namespace PhpDDD\DomainDrivenDesignBundle;
 
 use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\Compiler\DispatcherCompilerPass;
+use PhpDDD\DomainDrivenDesignBundle\DependencyInjection\DomainDrivenDesignExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -38,5 +39,13 @@ final class PhpDDDDomainDrivenDesignBundle extends Bundle
                 new DispatcherCompilerPass($options['service_id'], $options['tag_name'], $options['method'])
             );
         }
+    }
+
+    /**
+     * @return DomainDrivenDesignExtension
+     */
+    public function getContainerExtension()
+    {
+        return $this->extension = new DomainDrivenDesignExtension();
     }
 }
